@@ -1,70 +1,78 @@
 ---
-layout: page
-permalink: /tags/
+layout: document
 title: Tag
+permalink: /tag/
+public: true
 ---
 
 <!-- 종립님 블로그를 참고하여 Tag 기능 추가 -->
+<!-- link: https://johngrib.github.io/blog/2017/01/22/jekyll-category-tag/ -->
 <!-- 추후 따로 Tag 부분을 만들어보자 -->
 
-<ul class="tag-cloud">
-{% for tag in site.tags %}
-
-    <!-- tag_name 변수 지정: 태그명은 소문자화(slugize) 한다 -->
-    {% capture tag_name %}{{tag|first|slugize}}{% endcapture %}
-    <!-- font_size 변수 지정: 태그숫자/전체태그숫자 * 100 + 50 -->
-    {% capture font_size %}{{tag|last|size| times:100 | divided_by:site.tags.size | plus: 50 }}%{% endcapture %}
-    <!-- tag_size 변수 지정-->
-    {% capture tag_size %}{{tag|last|size}}{% endcapture %}
-
-    <li style="font-size:{{font_size}}">
-        <a href="#{{tag_name}}" onclick="showTag('#{{tag_name}}')">
-            {{tag_name}} ({{tag_size}})
-        </a>
-    </li>
-
+{% assign tagMap = site.data.tagMap %}
+{% assign tagList = site.data.tagList %}
+<div>
+    <ul class="tag-list">
+{% for tag in tagList %}
+        <li>
+            <a href="#{{tag}}" onclick="showTag('#{{tag}}')">
+                {{tag}}<sup>{{ tagMap[tag] | size }}</sup>
+            </a>
+        </li>
 {% endfor %}
-</ul>
+    </ul>
+</div>
 
-<div id="archives">
-{% for tag in site.tags %}
+<div>
+{% for tag in tagList %}
+    <div class="archive-group invisible" id="{{tag}}">
 
-    {% capture tag_name %}{{tag|first|slugize}}{% endcapture %}
+        <h3 id="{{tag}}">{{ tag }}</h3>
 
-    <div class="archive-group" style="display:none" id="{{tag_name}}">
-
-    <h3 id="{{tag_name}}">{{ tag_name }}</h3>
-
-    {% for post in site.tags[tag_name] %}
-        <article class="archive-item">
-            <h4>
-                <!-- click 하여 show/hide 한다 -->
-                <a href="{{ root_url }}{{ post.url }}">
-                    {{post.title}}
+        <ul class="post-list">
+    {% assign list = tagMap[tag]  %}
+    {% for postObj in list %}
+        {% assign post = site.data.pageMap[postObj.fileName] %}
+        {% if post.public != false %}
+            <li>
+                <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">
+                    <span>{{ post.title }}</span>
+                    <div class="post-meta" style="float: right;">
+                        {{ post.updated | date: "%Y.%m.%d" }}
+                    </div>
+            {% if post.summary != empty and post.summary != undefined %}
+                        <div class="post-excerpt">
+                            - {{ post.summary }}
+                        </div>
+            {% endif %}
                 </a>
-            </h4>
-        </article>
+            </li>
+        {% endif %}
     {% endfor %}
-
+        </ul>
     </div>
 {% endfor %}
 </div>
-
-<script src="//ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script>
-    $(document).ready(function init(){
-        var url = window.location.href;
-        var req = /#([^\s]+)$/.exec(url);
-
-        if(!Array.isArray(req)) {
-            return false;
-        }
-        var selector = '#' + req.pop();
-        showTag(selector);
-    });
-
     function showTag(selector) {
-        $('.archive-group').hide();
-        $(selector).show();
+
+        document.querySelectorAll('.visible')
+            .forEach(function(el) {
+                el.classList.remove('visible');
+                el.classList.add('invisible');
+            })
+
+        var list = document.querySelector(selector);
+        list.classList.add('visible');
+        list.classList.remove('invisible');
     }
+
+    ;(function showInitTag() {
+        const url = window.location.href;
+        const req = /#([^\s]+)$/.exec(url);
+        if(Array.isArray(req)) {
+            var selector = '#' + decodeURI(req.pop());
+            showTag(selector);
+        }
+    })();
 </script>
