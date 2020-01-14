@@ -2,9 +2,9 @@ snippet mktemp "blog new post"
 ---
 layout	: posts
 title	: Jenkins X Study(1)
-summary	: ${2}
-data	: 2020-01-14 22:03:20
-updated	: 2020-01-14 22:08:42 +0900
+summary	: CI/CD
+data	: 2020-01-14 22:03:20 +0900
+updated	: 2020-01-15 08:46:01 +0900
 tag	: jenkins cicd 
 toc	: true
 comment	: true
@@ -30,7 +30,6 @@ public	: true
 위 내용을 고려하려고 다른 Jenkins를 대체할 툴을 검색 하고 있었지만 기존 환경과 동일하며 Kubernetes에 최적화가 되어있다는 Jenkins X를 보게 되었다.
 
 
-***
 ### Jenkins 와 Jenkins X의 다른점은 무엇인가?
 ---
 가장 큰차이점은 Kubernetes 환경을 위한 추가 도구들을 같이 제공 해준다.
