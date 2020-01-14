@@ -1,9 +1,8 @@
-
 ---
 layout	: posts
 title	: Jenkins X Study(1)
 summary	: ${2}
-data	: 2020-01-14 22:03:20
+data	: 2020-01-14 22:03:20 +0900
 updated	: 2020-01-15 08:16:44 +0900
 tag	: jenkins cicd 
 toc	: true

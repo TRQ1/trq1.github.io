@@ -12,3 +12,5 @@ English
 I am a Junior DevOps Engineer now.  
 I am interested in analyzing application performance with monitoring tools and automating of CI/CD Pipeline. 
 Whenever you have questions and suggestions about the posts, please let me know the feedback. 
+
+11
