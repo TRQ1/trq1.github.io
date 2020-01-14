@@ -4,7 +4,7 @@ layout	: posts
 title	: Jenkins X Study(1)
 summary	: ${2}
 data	: 2020-01-14 22:03:20
-updated	: 2020-01-14 22:04:24 +0900
+updated	: 2020-01-14 22:08:42 +0900
 tag	: jenkins cicd 
 toc	: true
 comment	: true
@@ -34,3 +34,5 @@ public	: true
 ### Jenkins 와 Jenkins X의 다른점은 무엇인가?
 ---
 가장 큰차이점은 Kubernetes 환경을 위한 추가 도구들을 같이 제공 해준다.
+jx Tool을 제공하여 cmd 환경으로 더욱 쉽게 Kubernetes에 배포 할수 있도록 도와준다. 현재 글을 읽을 경우 jx를 사용하면
+굳이 Kubernetes를 자세히 이해하지 않아도 배포 할수 있는것으로 보인다.
