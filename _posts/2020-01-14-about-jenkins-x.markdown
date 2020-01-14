@@ -1,10 +1,10 @@
-snippet mktemp "blog new post"
+
 ---
 layout	: posts
 title	: Jenkins X Study(1)
 summary	: CI/CD
 data	: 2020-01-14 22:03:20 +0900
-updated	: 2020-01-15 08:46:01 +0900
+updated	: 2020-01-15 08:50:38 +0900
 tag	: jenkins cicd 
 toc	: true
 comment	: true
