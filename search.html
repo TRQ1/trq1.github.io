@@ -1,0 +1,22 @@
+---
+layout: searchList
+title: Search
+permalink: /search/
+public: true
+---
+
+<!-- google search 기능 -->
+<div id="home-search">
+    <script>
+        (function() {
+            var cx = '006237026788726831586:9vifsd6titr';
+            var gcse = document.createElement('script');
+            gcse.type = 'text/javascript';
+            gcse.async = true;
+            gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(gcse, s);
+        })();
+    </script>
+    <gcse:search linkTarget="_parent" queryParameterName="searchString"></gcse:search>
+</div>
