@@ -3,16 +3,12 @@ layout: page
 title: About
 permalink: /about/
 ---
+Korean  
+IT를 좋아하고 Devops에 관심이 많은 newbie 입니다.  
+현재 성능 분석 및 CI/CD 자동화 업무를 하고 있으며, 블로그 글에 대해서 궁금하신점이나 의견있으시면  
+언제든지 Issue 및 Comment 부탁드립니다.  
 
-This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](https://jekyllrb.com/)
-
-You can find the source code for Minima at GitHub:
-[jekyll][jekyll-organization] /
-[minima](https://github.com/jekyll/minima)
-
-You can find the source code for Jekyll at GitHub:
-[jekyll][jekyll-organization] /
-[jekyll](https://github.com/jekyll/jekyll)
-
-
-[jekyll-organization]: https://github.com/jekyll
+English  
+I am a Junior DevOps Engineer now.  
+I am interested in analyzing performance with monitoring tools and automating of CI/CD Pipeline. 
+Whenever you have questions and suggestions about the posts, please let me know the feedback. 
