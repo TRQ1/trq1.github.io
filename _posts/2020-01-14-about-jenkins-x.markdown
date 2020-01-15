@@ -1,8 +1,7 @@
-
 ---
 layout	: posts
 title	: Jenkins X Study(1)
-summary	: CI/CD
+summary	: Jenkins
 data	: 2020-01-14 22:03:20 +0900
 updated	: 2020-01-15 08:50:38 +0900
 tag	: jenkins cicd 
