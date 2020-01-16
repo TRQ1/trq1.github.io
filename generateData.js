@@ -2,11 +2,10 @@
 
 const YAML = require('yamljs');
 const fs = require('fs');
-const path = './_wiki'
+const path = '_posts'
 const list = [];
 
-getFiles('./_wiki', 'wiki', list);
-getFiles('./_posts', 'blog', list);
+getFiles('./_posts', 'post', list);
 
 const dataList = list.map(function collectData(file) {
 
@@ -30,11 +29,11 @@ const dataList = list.map(function collectData(file) {
 const tagMap = {};
 
 dataList.forEach(function collectTagMap(data) {
-    if (!data.tag) {
+    if(!data.tags) {
         return;
     }
-    data.tag.forEach(function(tag) {
-        if (!tagMap[tag]) {
+    data.tags.forEach(function(tag) {
+        if(!tagMap[tag]) {
             tagMap[tag] = [];
         }
         tagMap[tag].push({
@@ -44,7 +43,7 @@ dataList.forEach(function collectTagMap(data) {
     });
 });
 
-for (tag in tagMap) {
+for(tag in tagMap) {
     tagMap[tag].sort(function sortByFileName(a, b) {
         return a.fileName.toLowerCase().localeCompare(b.fileName.toLowerCase());
     });
@@ -76,11 +75,11 @@ dataList.sort(function(a, b) {
 });
 
 dataList.forEach(function(page) {
-    if (page.parent && page.parent != 'index') {
+    if(page.parent && page.parent != 'index') {
 
         var parent = pageMap[page.parent];
 
-        if (parent && parent.children) {
+        if(parent && parent.children) {
             parent.children.push(page.fileName);
         }
     }
@@ -90,7 +89,7 @@ savePageList(pageMap);
 
 function saveTagMap(tagMap) {
     fs.writeFile("./_data/tagMap.yml", YAML.stringify(tagMap), function(err) {
-        if (err) {
+        if(err) {
             return console.log(err);
         }
         console.log("tagMap saved.");
@@ -99,7 +98,7 @@ function saveTagMap(tagMap) {
 
 function saveTagList(tagList) {
     fs.writeFile("./_data/tagList.yml", YAML.stringify(tagList), function(err) {
-        if (err) {
+        if(err) {
             return console.log(err);
         }
         console.log("tagList saved.");
@@ -108,7 +107,7 @@ function saveTagList(tagList) {
 
 function savePageList(pageMap) {
     fs.writeFile("./_data/pageMap.yml", YAML.stringify(pageMap), function(err) {
-        if (err) {
+        if(err) {
             return console.log(err);
         }
         console.log("pageMap saved.");
@@ -116,7 +115,7 @@ function savePageList(pageMap) {
 }
 
 function parseInfo(file, info) {
-    if (info == null) {
+    if(info == null) {
         return undefined;
     }
     const obj = {};
@@ -128,25 +127,25 @@ function parseInfo(file, info) {
     rawData.forEach(function(str) {
         const result = /^\s*([^:]+):\s*(.+)\s*$/.exec(str);
 
-        if (result == null) {
+        if(result == null) {
             return;
         }
 
         const key = result[1].trim();
-        const val = result[2].trim().replace(/\[{2}|\]{2}/g, '');
+        const val = result[2].trim();
 
         obj[key] = val;
     });
 
-    if (file.type === 'blog') {
-        obj.url = '/blog/' + obj.date.replace(/^(\d{4})-(\d{2})-(\d{2}).*$/, '$1/$2/$3/');
+    if(file.type === 'post') {
+        obj.url = '/posts/' + obj.date.replace(/^(\d{4})-(\d{2})-(\d{2}).*$/, '$1/$2/$3/');
         obj.url += obj.fileName.replace(/^(\d{4}-\d{2}-\d{2}-)?(.*)$/, '$2');
-    } else if (file.type === 'wiki') {
-        obj.url = '/wiki/' + obj.fileName;
+    } else if(file.type === 'paper') {
+       // obj.url = '/papers/' + obj.fileName;
     }
 
-    if (obj.tag) {
-        obj.tag = obj.tag.split(/\s+/);
+    if(obj.tags) {
+        obj.tags = obj.tags.split(/\s+/);
     }
 
     const mtime = fs.statSync(file.path).mtime;
@@ -163,16 +162,16 @@ function isMarkdown(fileName) {
     return /\.md$/.test(fileName);
 }
 
-function getFiles(path, type, array) {
+function getFiles(path, type, array){
 
-    fs.readdirSync(path).forEach(function(fileName) {
+    fs.readdirSync(path).forEach(function(fileName){
 
         const subPath = path + '/' + fileName;
 
-        if (isDirectory(subPath)) {
+        if(isDirectory(subPath)) {
             return getFiles(subPath, type, array);
         }
-        if (isMarkdown(fileName)) {
+        if(isMarkdown(fileName)) {
             const obj = {
                 'path': path + '/' + fileName,
                 'type': type,
