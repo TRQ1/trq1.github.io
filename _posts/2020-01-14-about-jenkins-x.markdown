@@ -1,5 +1,5 @@
 ---
-layout	: posts
+layout	: default
 title	: Jenkins X Study(1) - Jenkins X 와 GitOps란
 summary	: Jenkins
 data	: 2020-01-14 22:03:20 +0900

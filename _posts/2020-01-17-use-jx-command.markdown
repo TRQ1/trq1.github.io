@@ -1,5 +1,5 @@
 ---
-layout	: posts
+layout	: default
 title	: Jenkin X Study(2) - jx command 사용해보자 (작성중)
 summary	: JenkinsX
 data	: 2020-01-17 08:09:36 +0900
@@ -29,14 +29,12 @@ $curl -L "https://github.com/jenkins-x/jx/releases/download/$(curl --silent "htt
 # jx command를 /usr/local/bin 로 이동
 $sudo mv jx /usr/local/bin
 ```
-
 Windows에 설치 방법 (chocolatey 사용하여 설치 방법)
 1. CMD(command Prompt)를 Admin 권한으로 실행
 2. powershell.exe를 실행하고 choco binary를 설치 한다 
- **@"%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe" -NoProfile -InputFormat None -ExecutionPolicy Bypass -Command "iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))" && SET "PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin"**
-3. chcolety를 사용하여 Jenkins X 설치
-**choco install jenkins-x**
-
-[Install jx](https://jenkins-x.io/docs/getting-started/setup/install/)
+`@"%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe" -NoProfile -InputFormat None -ExecutionPolicy Bypass -Command "iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))" && SET "PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin"`
+3. chcolety를 사용하여 Jenkins X 설치  
+`choco install jenkins-x`
+	link : [Install jx](https://jenkins-x.io/docs/getting-started/setup/install/)
 
 ---
