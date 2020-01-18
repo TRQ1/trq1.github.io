@@ -37,4 +37,50 @@ Windows에 설치 방법 (chocolatey 사용하여 설치 방법)
 `choco install jenkins-x`
 	link : [Install jx](https://jenkins-x.io/docs/getting-started/setup/install/)
 
+### jx Commnad를 확인 해보자
+
+Jenkinx X 에서는 쉽게 CI/CD 환경이 구성 가능하다고 하는대 많은 기능중 하나에서는 Kubernetes 환경에서 운영 가능한 Kubernetes Cluster 및 운영에 필요한 툴들을 설치 해준다. Jx 명령어로를 통해서 기존에 있는 Kubernetes Cluster에 배포 하거나 신규 환경 생성을 Kubetnetes를 깊게 이해하지 않아도 쉽게 이용 할 수 있다.
+
+Jx Command를 사용 방법을 습득 하려고 Jenkins X 공식 사이트 및 DevOps 2.6 Toolkit 책을 보면서 실습을 해보고 있다.
+1. [jx command](https://jenkins-x.io/docs/getting-started/)
+2. [DevOps 2.6 Toolkit ](https://technologyconversations.com/2019/01/28/the-devops-2-6-toolkit-jenkins-x-is-born/)
+
+DevOps 2.6 Toolkit은 작년에 사두고 시간이 나지 않아 이제야 읽어본 책중에 하나이다.
+
+### jx create cluster
+jx 명령어에서는 Kubernetes 환경에 Cluster를 생성 해주는 옵션을 제공 해주는데 아래 와 같은 Cloud provider에서 제공되는 Kubernetes 환경에 구성이 가능하다.  
+아래는 `jx create cluster help` 명령어를 사용하여 확인한 내용을 적어두었다.
+
+Cloud Providers:
+>    * aks (Azure Container Service - https://docs.microsoft.com/en-us/azure/aks)
+>    * aws (Amazon Web Services via kops - https://github.com/aws-samples/aws-workshop-for-kubernetes/blob/master/readme.adoc)
+>    * eks (Amazon Web Services Elastic Container Service for Kubernetes - https://docs.aws.amazon.com/eks/latest/userguide/getting-started.html)
+>    * gke (Google Container Engine - https://cloud.google.com/kubernetes-engine)
+>    # icp (IBM Cloud Private) - https://www.ibm.com/cloud/private
+>    * iks (IBM Cloud Kubernetes Service - https://console.bluemix.net/docs/containers)
+>    * oke (Oracle Cloud Infrastructure Container Engine for Kubernetes - https://docs.cloud.oracle.com/iaas/Content/ContEng/Concepts/contengoverview.htm)
+>    * kubernetes for custom installations of Kubernetes
+>    * minikube (single-node Kubernetes cluster inside a VM on your laptop)
+>	* minishift (single-node OpenShift cluster inside a VM on your laptop)
+>	* openshift for installing on 3.9.x or later clusters of OpenShift
+
+위의 Cloud Provider 사용시 필요한 Tools를 보여준다.
+
+Dependence tools:
+>   * kubectl (CLI to interact with Kubernetes clusters)  
+>  * helm (package manager for Kubernetes)  
+>  * draft (CLI that makes it easy to build applications that run on Kubernetes)  
+>  * minikube (single-node Kubernetes cluster inside a VM on your laptop )  
+>  * minishift (single-node OpenShift cluster inside a VM on your laptop)  
+>  * virtualisation drivers (to run Minikube in a VM)  
+>  * gcloud (Google Cloud CLI)  
+>  * oci (Oracle Cloud Infrastructure CLI)  
+>  * az (Azure CLI)  
+>  * ibmcloud (IBM CLoud CLI) 
+
+실습을 위해 minikube로 구성된 Kubernetes에 신규로 설치 할 거니 아래와 같이 명령어로 실행을 해보았다.
+
+`jx create cluster help`
+
+
 ---
