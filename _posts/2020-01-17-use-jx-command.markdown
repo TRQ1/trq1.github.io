@@ -1,6 +1,6 @@
 ---
 layout	: default
-title	: Jenkin X Study(2) - jx command 사용해보자 (작성중)
+title	: Jenkin X Study(2) - jx command 설치
 summary	: JenkinsX
 data	: 2020-01-17 08:09:36 +0900
 updated	: 2020-01-17 08:09:36 +0900
@@ -47,6 +47,17 @@ Jx Command를 사용 방법을 습득 하려고 Jenkins X 공식 사이트 및 D
 
 DevOps 2.6 Toolkit은 작년에 사두고 시간이 나지 않아 이제야 읽어본 책중에 하나이다.
 
+### jx 사용전 Prerequisites
+jx 명령어를 사용하기전에 기본적으로 필요한 패키지가 설치 되어있어야 한다. 일반적으로 클러스터 구성및 환경 설정시 helm과 kubectl 명령어를 사용하여 구성하기 때문에 꼭 필요한 패키지 리스트 들이다.
+
+```
+1. Git
+2. kubectl
+3. helm (jx create cluster 명령어 사용ㄱ시 helm v2를 요구한다.)
+4. Cloude Provider CLI (ex. aws-cli)
+```
+
+
 ### jx create cluster
 jx 명령어에서는 Kubernetes 환경에 Cluster를 생성 해주는 옵션을 제공 해주는데 아래 와 같은 Cloud provider에서 제공되는 Kubernetes 환경에 구성이 가능하다.  
 아래는 `jx create cluster help` 명령어를 사용하여 확인한 내용을 적어두었다.
@@ -80,7 +91,65 @@ Dependence tools:
 
 실습을 위해 minikube로 구성된 Kubernetes에 신규로 설치 할 거니 아래와 같이 명령어로 실행을 해보았다.
 
-`jx create cluster help`
+추후 테스트를 위해 AWS eks에 셋팅해서 실제 pipeline 구성 예정이다.
 
+사용 명령어 `jx create cluster minikube`
 
+```
+# minikube로 클러스터 생성시 일단 minikube에서 사용할 클러스터 Resource를 지정할수있다.
+# 또한 minikube 옵션은 2020년 2월에 사라질 예정이라. jx 로 생성시에 minikube를 start해는걸 권장한다.
+# 설치 목적보다도 테스트 목적이기때문에 테스트시 minikube 옵션을 사용하여 클러스터를 생성하였다.
+Command "minikube" is deprecated, it will be removed on Feb 1 2020. We now highly recommend you use minikube start instead.
+? memory (MB) 4096
+? cpu (cores) 3
+? disk-size (MB) 150GB
+? Select driver: hyperkit
+Installing hyperkit
+Creating Minikube cluster...
+* minikube v1.6.2 on Darwin 10.15.2
+...
+* Done! kubectl is now configured to use "minikube"
+? Select Jenkins installation type: Serverless Jenkins X Pipelines with Tekton
+Namespace jx created 
+...
+Set up a Git username and API token to be able to perform CI/CD
+Creating a local Git user for github.com server
+? github.com username: <USERNAME>
+To be able to create a repository on github.com we need an API Token
+Please click this URL and generate a token 
+
+# 해당 URL을 들어가면 셋팅된 권한으로 token을 만들수 있다.
+https://github.com/settings/tokens/new?scopes=repo,read:user,read:org,user:email,write:repo_hook,delete_repo
+
+Then COPY the token and enter it below:
+
+? API Token: <TOKEN>
+Select the CI/CD pipelines Git server and user
+? Do you wish to use github.com as the pipelines Git server: Yes
+Creating a pipelines Git user for github.com server
+To be able to create a repository on github.com we need an API Token
+Please click this URL and generate a token 
+https://github.com/settings/tokens/new?scopes=repo,read:user,read:org,user:email,write:repo_hook,delete_repo
+
+Then COPY the token and enter it below:
+
+? API Token: <TOKEN>
+Setting the pipelines Git server https://github.com and user name <USERNAME>
+Enumerating objects: 1440, done.
+Total 1440 (delta 0), reused 0 (delta 0), pack-reused 1440
+Setting up prow config into namespace jx
+Installing Tekton into namespace jx
+Installing Prow into namespace jx
+...
+```
+
+설치가 완료 된후 jx command를 사용하여 클러스터에 정상적으로 연결되는지 확인 해보자
+```
+$ jx context
+Using namespace 'jx' from context named 'minikube' on server 'https://192.168.64.4:8443'.
+
+$ jx environment
+Using environment 'dev' in team 'jx' on cluster 'minikube'.
+```
+만약 해당 환경은 minikube랑 minikube로 보이지만 혹시 gcloud나 aws의 eks에 셋팅하였다면 해당 환경의 정보를 확인 할수있다.
 ---
