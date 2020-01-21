@@ -10,5 +10,5 @@ IT를 좋아하고 Devops에 관심이 많은 newbie 입니다.
 
 English  
 I am a Junior DevOps Engineer now.  
-I am interested in analyzing application performance with monitoring tools and automating of CI/CD Pipeline. 
+I am interested in analyzing application performance with monitoring tools and the automation of CI/CD Pipeline. 
 Whenever you have questions and suggestions about the posts, please let me know the feedback. 
