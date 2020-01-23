@@ -12,7 +12,7 @@ public	: true
 * TOC
 {:toc}
 
-# Jenkins X
+## Jenkins X
 
 해당 문서는 작성 중이며 전적으로 개인적인 의견이 많이 반영 되어있다.
 
@@ -35,7 +35,7 @@ public	: true
 jx Tool을 제공하여 cmd 환경으로 더욱 쉽게 Kubernetes에 배포 할수 있도록 도와준다. 현재 글을 읽을 경우 jx를 사용하면
 굳이 Kubernetes를 자세히 이해하지 않아도 배포 할수 있는것으로 보인다. 
 
-[Jenkins X QnA](https://jenkins-x.io/docs/overview/faq/)
+[Jenkins X QnA](https://jenkins-x.io/docs/overview/faq/ )
 
 위 링크를 보면 Jenkins X 와 Jenkins 비교점을 볼수 있는대, Jenkins의 경우 우리가 흔히 사용한 CI/CD server(당연히 다양한 Plugin을 조합하여 자동화도 가능)를 제공하고 Jenkins X는 Kubernetes 환경에 대한 CI/CD 환경을 통하여 GitOps promotion 과 Pull requests에 대한 Privew 환경을 제공해준다고 한다.
 
@@ -51,5 +51,5 @@ jx Tool을 제공하여 cmd 환경으로 더욱 쉽게 Kubernetes에 배포 할�
 
 GitOps에서 너무 복잡하게 이해하지 말고 CI는 Master branch에 merging을 업데이트하고 CD는 CI에서 업데이트 된 내용을 Kubernetes에 반영한다고 생각하면 쉬울 것 같다.
 
-1. [What is GitOps](https://www.cloudbees.com/gitops/what-is-gitops)
-2. [What is GitOps really](https://www.weave.works/blog/what-is-gitops-really)
+1. [What is GitOps](https://www.cloudbees.com/gitops/what-is-gitops )
+2. [What is GitOps really](https://www.weave.works/blog/what-is-gitops-really )
