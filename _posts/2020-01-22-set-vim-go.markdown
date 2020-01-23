@@ -12,32 +12,32 @@ public	: true
 * TOC
 {:toc}
 
-# vim-go
+## vim-go
 
 ### vim-go를 왜 쓰게 되었나?
 Team내에서 좀더 업무 자동화를 위해 내부 개발이 필요하게 되어 Language 습득 중에 개발 환경 설정을 찾는 도중에 개발팀 이종립님 도움으로 vim-go를 알게 되어 해당 설정을 한후에 내용을 팀원들에게 내용 공유 차 간단히 정리 하게 되었다. (vs code와 vim사이를 고민을 많이 했지만 팀 내부 분들이 Vim이 더 익숙하신 분들이 많아 vim으로 환경 설정을 하게 되었다.)
 
-참고 링크: [go를 위한 vim 환경설정](https://johngrib.github.io/wiki/vim-go-env/)
+참고 링크: [go를 위한 vim 환경설정](https://johngrib.github.io/wiki/vim-go-env/ )
 
 ### 요구사항 확인
 - **vim 버전을 확인하자.**   
 vim-go 및 필요 Plugin을 사용 하려면 vim 버전이 8버전 이상 설치를 요구 되어진다. 아래와 같이 버전 확인 및 재설치를 진행해보자.  
 
-```
+```sh
 #vim 버전을 확인 해보자
-$brew info vim
+brew info vim
 
 # 만약 8버전 이상이 아닌 경우 아래와 같이 uninstall 한 후에 재 설치 하는게 가장 깔끔하다.
-$brew unlink vim
-$brew unlinstall vim
-$brew install vim
+brew unlink vim
+brew unlinstall vim
+brew install vim
 ```
 
 - **vim-plug 설치하자.**  
 vim-plug가 설치 되어 있어야 한다. 예전에는 Vundle을 사용하였지만 사용시 vim이 정상적으로 실행 안될때가 많아져서 vim-plug로 변경하게 되었다.
 vim plug는 vim 에서 사용 할 수 있는 plugin manager로 plugin을 쉽게 설치 하고 사용 할수 있도록 도와준다. 
 
-```
+```sh
 # 아래와 같이 vim-plug를 설치 하자 
 $ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \ 
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -47,7 +47,7 @@ $ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 ### vim-go 설치
 - **.vimrc에 설치해야할 Plugin을 정의 하자**  
 
-```
+```viml
 filetype plugin indent on 
 
 " vim-Plug Plugin List
@@ -80,7 +80,7 @@ Plug 'junegunn/fzf.vim'
 call plug#end()
 ```
 
-- 저장하고 ESC 키를 눌러 :PlugInstall 명령어로 설정한 Plugin을 설치 해보자.  
+- 저장하고 ESC 키를 눌러 `:PlugInstall` 명령어로 설정한 Plugin을 설치 해보자.  
 
 ```
 :PlugInstall
@@ -88,7 +88,7 @@ call plug#end()
 
 - .vimrc에 Go lang 설정을 넣어보자 다행히 종립님이 블로그에 설정값을 잘 정리해 주셔서 일일히 찾지 않고 쉽게 설정 할 수 있었다. 만약 개인적으로 더 필요한 경우에는 :help vim-go 명령어를 사용하여 옵션값을 확인해서 설정해보자.
 
-```
+```viml
 " 저장할 때 자동으로 formatting 및 import from https://johngrib.github.io/
 let g:go_fmt_command = "goimports"
 let g:go_list_type = "quickfix"
@@ -127,7 +127,7 @@ autocmd FileType go nnoremap <Tab>c :GoCoverageToggle<CR>
 
 vim으로 실행된 코드내에서 IDE 처럼 다양한 기능들을 사용 할 수 있다. 아래는 사용방법에 대한 명령어 이다.  
 이부분도 위에 참고 링크에서 종립님이 자세히 작성을 해주셔서 내용 정리 및 팀 공유차 작성하게 된 파트 이다. 좀더 많은 자료를 확인 하고 싶으면 아래 링크를 확인 해보자
-[vim-go](https://johngrib.github.io/wiki/vim-go-env/#vim-go)
+[vim-go](https://johngrib.github.io/wiki/vim-go-env/#vim-go )
 
 #### Run/Build/Test
 vim-go를 설치하면 vim내에서 실행, 테스트,  빌드를 실행 할 수 있게 된다. 아래는 vim 내에서 명령어 호출 방법이다.
