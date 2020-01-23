@@ -20,7 +20,7 @@ Blue/Green은 무슨 방식이고 왜 써야 하는지는 알지만 정확히 AW
 ### Blue/Green 배포란
 간단히 정리해서 말하면 Blue/Green 배포는 기존 애플리케이션 환경에서 신규로 배포되는 환경으로 트래픽 제어를 통하여 전환 하는 방식을 말한다.
 
-![bluegreen](../../images/blue_green_deployments.png )
+![bluegreen](./images/blue_green_deployments.png )
 
 [BlueGreenDeployment](https://martinfowler.com/bliki/BlueGreenDeployment.html )
 
