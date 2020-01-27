@@ -1,6 +1,6 @@
 ---
 layout	: default
-title	: Blue/Green with CodeDeploy on AWS (작성중)
+title	: Blue/Green with CodeDeploy on AWS
 summary	: devployment
 data	: 2020-01-23 19:35:14 +0900
 updated	: 2020-01-23 19:35:14 +0900
