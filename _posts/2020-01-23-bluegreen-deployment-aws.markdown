@@ -20,7 +20,7 @@ Blue/Green은 무슨 방식이고 왜 써야 하는지는 알지만 정확히 AW
 ### Blue/Green 배포란
 간단히 정리해서 말하면 Blue/Green 배포는 기존 애플리케이션 환경에서 신규로 배포되는 환경으로 트래픽 제어를 통하여 전환 하는 방식을 말한다.
 
-![bluegreen](./images/blue_green_deployments.png )
+![bluegreen](https://github.com/TRQ1/trq1.github.io/raw/master/images/blue_green_deployments.png )
 
 [BlueGreenDeployment](https://martinfowler.com/bliki/BlueGreenDeployment.html )
 
@@ -58,3 +58,34 @@ Blue/Green은 무슨 방식이고 왜 써야 하는지는 알지만 정확히 AW
 1. 기존 Auto Scaling Group을 복사 하는 방식: blue/green 배포시에, CodeDeploy는 Green 환경으로 사용 할 인스턴스들을 새로 생성하며 해당 방식을 사용할 경우( 결국 옵션이다.) CodeDeploy는 기존에 명시된 Auto Scaling Group을 Green 환경에서 사용을 한다. – 영문을 보다보니 기계적으로 해석 하게 되는대  배포시에 새로운 Auto Scaling Group을 생성하여 새로 생성된 인스턴스들을 이쪽에 등록하고 배포를 하는 형식을 뜻한다. 해당 방식이 운영 환경에서 사용되는 옵션이다.
 
 2. 수동으로 인스턴스 선택하는 방식: EC2 인스턴스에 태그를 하여 Green 환경에서 사용할 인스턴스를 지정 할수 있다. 기존에 만들어진 ASG나 인스턴스를 지정하여 새로 환경을 생성하지 않고 해당 환경만 사용하게 하는 옵션이다. 
+
+
+
+
+#### CodeDeploy Deployment Hook 프로세스
+여기서 그럼 BlueGreen 배포시 CodeDeploy에서 호출되는 hook 방식을 확인해보자.
+
+
+![bluegreen](https://github.com/TRQ1/trq1.github.io/raw/master/images/codedeployHook.png )
+
+
+위 와 같은 프로세스로 배포가 된다.
+
+위에 Hook 배포 프로세스 보면 새로 생성된 Green 환경의 인스턴스들은 각 AfterAllowTraffic 상태까지 완료가 되어야 기존의 Blue 환경 인스턴스들이 BeforeBlockTraffic 상태를 시작으로 전환하며 최종적으로 End 형태까지 간다. 
+
+최종적으로 END 프로세스 에서는 기존 Blue 환경이 정상적으로 전환되고 Code Deploy 에서  Auto Scaling 그룹이 배포가 완료된 Green 환경으로 변경이 되고, 지속 시간 설정 값 이후에 기존 Blue Auto Scaling이 삭제 되면서 기존 Instance들도 삭제된다.
+
+위처럼 변경되어야 추후 다시 배포가 일어날시 Green 환경이 Blue가되며 신규로 또다른 Green환경(Auto scaling 그룹 복제)를 하기 때문이다.
+
+#### 장애시 대처 방안
+
+1. CodeDeploy 단계에서 실패 했을 경우
+ - DownloadBundle - ValidateService 단계 사이에서 에러가 발생 하는경우
+     1. 새로 생성된 Green Autoscaling group 삭제
+     2. CodeDeploy 에서 기존(Blue) AutoScaling Group으로 설정되어있는지 확인
+
+ - BeforeBlockTraffic 에서 에러가 발생된 경우
+     1. 해당 경우는 특정 인스턴스들에서만 발생되었을 확률이 높음
+     2. CodeDeploy에서 AutoScaling Group을 Blue에서 새로 생성한 Green AutoScaling Group으로 변경
+     3. 다시 배포 진행이 깔끔함
+     4. BeforeBlockTraffic 에서 에러가 발생되는경우 각 Hook의 LifeCycle과 배포 도중에 AutoScaling이 갑작스럽게 일어나서 발생 될수 있는 이슈 이므로 해당 배포시에는 Auto Scaling이 안일어날 시간대에 하는것이 가장 좋은 것으로 판단 됨
