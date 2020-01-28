@@ -8,7 +8,6 @@ dl, dd, ol, ul, figure {
   padding: 0;
 }
 
-
 /**
  * Basic styling
  */
@@ -25,6 +24,17 @@ body {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
+  margin-right: 320px;
+  margin-left: 320px;
+  padding-right: 0px;
+  padding-left: 0px;
+  @extend %clearfix;
+
+  @include media-query($on-laptop) {
+    max-width: -webkit-calc(#{$content-width} - (#{$spacing-unit}));
+    max-width:         calc(#{$content-width} - (#{$spacing-unit}));
+    padding-right: $spacing-unit / 2;
+    padding-left: $spacing-unit / 2;
 }
 
 /**
