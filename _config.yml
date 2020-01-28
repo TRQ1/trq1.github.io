@@ -32,7 +32,6 @@ theme: minima
 plugins:
   - jekyll-feed
 
-
 # Collections e.g. configure collections to use sitemaps.html 
 # ref: https://github.com/johngrib/johngrib.github.io/blob/master/_config.yml
 collections:
