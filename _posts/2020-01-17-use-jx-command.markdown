@@ -1,6 +1,6 @@
 ---
 layout	: default
-title	: Jenkin X Study(2) - jx command 설치
+title	: Jenkins X Study(2) - jx command 설치
 summary	: JenkinsX
 data	: 2020-01-17 08:09:36 +0900
 updated	: 2020-01-17 08:09:36 +0900
