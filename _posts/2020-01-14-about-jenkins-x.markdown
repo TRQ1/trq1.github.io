@@ -1,17 +1,14 @@
 ---
-layout	: default
+layout	: posts
 title	: Jenkins X Study(1) - Jenkins X 와 GitOps란
 summary	: Jenkins
 data	: 2020-01-14 22:03:20 +0900
 updated	: 2020-01-15 08:50:38 +0900
-tag	: jenkins cicd 
-toc	: true
 comment	: true
-public	: true
+categories: jenkins
+tags:
+  - jekyll
 ---
-* TOC
-{:toc}
-
 ## Jenkins X
 
 해당 문서는 작성 중이며 전적으로 개인적인 의견이 많이 반영 되어있다.

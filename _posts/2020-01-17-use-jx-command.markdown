@@ -1,17 +1,14 @@
 ---
-layout	: default
+layout	: posts
 title	: Jenkins X Study(2) - jx command 설치
 summary	: JenkinsX
 data	: 2020-01-17 08:09:36 +0900
 updated	: 2020-01-17 08:09:36 +0900
-tag	: JenkinsX CI/CD jx
-toc	: true
 comment	: true
-public	: true
+categories: JenkinsX CI/CD jx
+tags:
+  - jekyl
 ---
-* TOC
-{:toc}
-
 ## jx Command
 jx command는 Jenkin X 에서 제공해주는 명령어 이며, 해당 명령어를 사용하여 Kubernetes에 Jenklins X Pipeline(GitOps)를 쉽게 구성해주고 CLI 기반으로 운영 할 수 있게 해준다. 또한 jx 명령어를 사용하여 새로운 Kubernetes Cluster 생성 하여 신규 환경도 구성 가능하다.
 ---

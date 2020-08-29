@@ -4,14 +4,11 @@ title	: Blue/Green with CodeDeploy on AWS
 summary	: devployment
 data	: 2020-01-23 19:35:14 +0900
 updated	: 2020-01-23 19:35:14 +0900
-tag	: CI/CD AWS
-toc	: true
 comment	: true
-public	: true
+categories: CI/CD AWS
+tags:
+  - jeky
 ---
-* TOC
-{:toc}
-
 ## Blue/Green with CodeDeploy on AWS
 
 ### 정리한 이유
@@ -20,7 +17,7 @@ Blue/Green은 무슨 방식이고 왜 써야 하는지는 알지만 정확히 AW
 ### Blue/Green 배포란
 간단히 정리해서 말하면 Blue/Green 배포는 기존 애플리케이션 환경에서 신규로 배포되는 환경으로 트래픽 제어를 통하여 전환 하는 방식을 말한다.
 
-![bluegreen](https://github.com/TRQ1/trq1.github.io/raw/master/images/blue_green_deployments.png )
+![bluegreen](https://github.com/TRQ1/trq1.github.io/raw/master/assets/images/blue_green_deployments.png )
 
 [BlueGreenDeployment](https://martinfowler.com/bliki/BlueGreenDeployment.html )
 
@@ -66,7 +63,7 @@ Blue/Green은 무슨 방식이고 왜 써야 하는지는 알지만 정확히 AW
 여기서 그럼 BlueGreen 배포시 CodeDeploy에서 호출되는 hook 방식을 확인해보자.
 
 
-![bluegreen](https://github.com/TRQ1/trq1.github.io/raw/master/images/codedeployHook.png )
+![bluegreen](https://github.com/TRQ1/trq1.github.io/raw/master/assets/images/codedeployHook.png )
 
 
 위 와 같은 프로세스로 배포가 된다.
