@@ -40,7 +40,7 @@ words_per_minute         : 200 #read time을 계산하기 위한 분당 읽는 �
 comments: # 댓글 설정에 대한부분입니다. 기본적으로 false 로 되어있습니다.
   provider               : "disqus" # false (default), "disqus", "discourse", "facebook", "google-plus", "staticman", "staticman_v2" "custom"
   disqus:   #개인적으로 disqus 댓글 모듈을 사용하였습니다.
-    shortname            : https-trq1-github-io-blog # https://help.disqus.com/customer/portal/articles/466208-what-s-a-shortname-
+    shortname            : qa-blog # https://help.disqus.com/customer/portal/articles/466208-what-s-a-shortname-
   discourse:
     server               : # https://meta.discourse.org/t/embedding-discourse-comments-via-javascript/31963 , e.g.: meta.discourse.org
   facebook:
