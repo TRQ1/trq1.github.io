@@ -1,5 +1,5 @@
 ---
-layout	: default
+layout	: posts
 title	: Blue/Green with CodeDeploy on AWS
 summary	: devployment
 data	: 2020-01-23 19:35:14 +0900
