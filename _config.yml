@@ -121,7 +121,7 @@ analytics:
 # Site Author
 author:
   name             : "Q1"
-  avatar           : ""
+  avatar           : "/assets/images/profile_temp.JPG"
   bio              : "DevOps Engineer "
   location         : "Seoul, Korea"
   email            : "trq1.lee@gmail.com"
