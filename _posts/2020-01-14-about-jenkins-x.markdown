@@ -5,9 +5,9 @@ summary	: Jenkins
 data	: 2020-01-14 22:03:20 +0900
 updated	: 2020-01-15 08:50:38 +0900
 comment	: true
-categories: jenkins
+categories: CI/CD
 tags:
-  - jekyll
+  - Jenkins
 ---
 ## Jenkins X
 

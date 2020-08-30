@@ -5,9 +5,10 @@ summary	: devployment
 data	: 2020-01-23 19:35:14 +0900
 updated	: 2020-01-23 19:35:14 +0900
 comment	: true
-categories: CI/CD AWS
+categories: CI/CD
 tags:
-  - jeky
+  - AWS
+  - CodeDeploy
 ---
 ## Blue/Green with CodeDeploy on AWS
 
