@@ -1,6 +1,6 @@
 ---
 layout	: posts
-title	: Golang 학습 일기 #1 (Json)
+title	: Golang 학습 일기(1) (Json)
 summary	: Golang
 data	: 2020-12-23 19:35:14 +0900
 updated	: 2020-12-23 19:35:14 +0900
