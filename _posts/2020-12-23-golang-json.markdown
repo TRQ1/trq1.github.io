@@ -5,7 +5,7 @@ summary	: Golang
 data	: 2020-12-23 19:35:14 +0900
 updated	: 2020-12-23 19:35:14 +0900
 comment	: true
-categories: CI/CD
+categories: Golang
 tags:
   - Golang
   - Json
