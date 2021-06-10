@@ -7,7 +7,10 @@ updated	: 2019-01-23 08:09:36 +0900
 comment	: true
 categories: Kubernetes, WAS
 tags:
-  - kubernetes, wildfly, tomcat, openjdk
+  - Kubernetes 
+  - Wildfly
+  - Tomcat
+  - OpenJdk
 ---
 
 * TOC

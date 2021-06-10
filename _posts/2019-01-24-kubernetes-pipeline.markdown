@@ -5,9 +5,10 @@ summary	: Kubernetes
 data	: 2019-01-24 08:09:36 +0900
 updated	: 2019-01-24 08:09:36 +0900
 comment	: true
-categories: Kubernetes, Pipeline
+categories: Kubernetes,Pipeline
 tags:
-  - kubernetes, Jenkins
+  - Kubernetes
+  - Jenkins
 ---
 
 * TOC

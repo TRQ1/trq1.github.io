@@ -7,7 +7,7 @@ updated	: 2019-01-22 08:09:36 +0900
 comment	: true
 categories: Kubernetes
 tags:
-  - kubernetes, 
+  - Kubernetes 
 ---
 
 * TOC
