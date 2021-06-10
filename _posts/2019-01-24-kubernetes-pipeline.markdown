@@ -5,7 +5,7 @@ summary	: Kubernetes
 data	: 2019-01-24 08:09:36 +0900
 updated	: 2019-01-24 08:09:36 +0900
 comment	: true
-categories: Kubernetes,Pipeline
+categories: Kubernetes
 tags:
   - Kubernetes
   - Jenkins
@@ -197,23 +197,16 @@ rules:
 #### Jenkins와 연결하기 위해 Kubernetes 요구 내용 준비
 
 1. 클러스터 서버 IP 확인  
-```
-kubectl config view | grep server | cut -f 2- -d ":" | tr -d " "
-```
+  - kubectl config view | grep server | cut -f 2- -d ":" | tr -d " "
 2. 클러스터에 접근가능한 Token 확인
   - admin 권한 확인시: kubectl -n kube-system describe secret $(kubectl -n kube-system get secret | grep admin-user | awk '{print $1}')
 
   - 일반유저 권한 확인시: kubectl describe secret $(kubectl get secrets | grep default | cut -f1 -d ' ') | grep -E '^token' | cut -f2 -d':' | tr -d '\t'    → 예제로 default 프로젝트에 접근가능한 token 생성
 3. Kubernetes server certificate key 확인
-```
-cat .kube/config   →  certificate-authority-data 항목 확인
-```
+  - cat .kube/config   →  certificate-authority-data 항목 확인
 4. certificate-authority-data 값을 base64로 decode
-```
-export certificatedata='certificate-authority-data 값넣기'
-
-echo $certificatedata | base64 --decode
-```
+  - export certificatedata='certificate-authority-data 값넣기'
+    echo $certificatedata | base64 --decode
 
 #### Jenkins/Kubernetes 연결 작업
 1. Jenkins 접속
@@ -232,11 +225,11 @@ echo $certificatedata | base64 --decode
 ![Jenkins slave tunnel 작업](https://github.com/TRQ1/trq1.github.io/raw/master/_post_img/jenkins-kubernetes-2.png)
 
 #### Jenkins-Slave Pod 만들기(Custom)
-```
+````
 FROM centos:7.5.1804
  
  
-#Required Package
+# Required Package
 RUN \
         yum install -y java java-devel sudo skopeo unzip && \
         yum clean all \
@@ -285,13 +278,6 @@ RUN curl --create-dirs -sSLo /usr/local/bin/jenkins-slave https://raw.githubuser
 RUN useradd --system --shell /bin/bash --create-home --home /home/jenkins jenkins
  
 # This is actually a very dirty hack because it grants sudo privilieges to user `jenkins` without password!
-#
-# Unfortunately the CentOS installation needs some further adaptions to project specific needs which
-# cannot (or shoudn't) be done on the public internet (e.g. modify /etc/hosts, add certificates to java keystore, ...).
-#
-# If there's a better way to customize the installation during runtime with root access, you're welcome to improve
-# this Dockerfile or to describe the approach.
-#
 RUN echo "jenkins ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/jenkins
  
 # Switch to user `jenkins`
@@ -324,12 +310,12 @@ ENTRYPOINT ["jenkins-slave"]
 
 아래와 같은 jenkinspipeline 생명주기 이다.
 
-![Jenkinspipeline 생명주기](https://github.com/TRQ1/trq1.github.io/raw/master/_post_img/jenkins-kubernetes-2.png)
+![Jenkinspipeline 생명주기](https://github.com/TRQ1/trq1.github.io/raw/master/_post_img/jenkins-kubernetes-3.png)
 - 위 이미지는 이해를 위해 블로그에서 가져옴 
 
 #### Jenkinsfile 작성
 해당 Jenkinsfile에서는 실제 테스트를 위한 Stage 별로 행위를 작성 하였습니다.
-````
+```
 #!groovy
  
 podTemplate(
@@ -372,4 +358,4 @@ node('gradle-dev') {
   }
  }
 }
-````
+```

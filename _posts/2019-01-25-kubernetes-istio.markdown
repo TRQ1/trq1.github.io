@@ -5,7 +5,7 @@ summary	: Kubernetes
 data	: 2019-01-25 08:09:36 +0900
 updated	: 2019-01-25 08:09:36 +0900
 comment	: true
-categories: Kubernetes, Istio, MetalLB
+categories: Kubernetes
 tags:
   - Kubernetes
   - Istio 
