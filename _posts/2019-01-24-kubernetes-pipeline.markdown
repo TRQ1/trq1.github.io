@@ -196,25 +196,23 @@ rules:
 #### Jenkins와 연결하기 위해 Kubernetes 요구 내용 준비
 
 1. 클러스터 서버 IP 확인  
-````
+```
 kubectl config view | grep server | cut -f 2- -d ":" | tr -d " "
-````
+```
 2. 클러스터에 접근가능한 Token 확인
   - admin 권한 확인시: kubectl -n kube-system describe secret $(kubectl -n kube-system get secret | grep admin-user | awk '{print $1}')
 
   - 일반유저 권한 확인시: kubectl describe secret $(kubectl get secrets | grep default | cut -f1 -d ' ') | grep -E '^token' | cut -f2 -d':' | tr -d '\t'    → 예제로 default 프로젝트에 접근가능한 token 생성
-
 3. Kubernetes server certificate key 확인
-````
+```
 cat .kube/config   →  certificate-authority-data 항목 확인
-````
-
+```
 4. certificate-authority-data 값을 base64로 decode
-````
+```
 export certificatedata='certificate-authority-data 값넣기'
 
 echo $certificatedata | base64 --decode
-````
+```
 
 #### Jenkins/Kubernetes 연결 작업
 1. Jenkins 접속
@@ -226,15 +224,14 @@ echo $certificatedata | base64 --decode
   - Kubernetes server certificate key: 디코드된 certificate-authority-data
   - Kubernetes Namespace: Kubernetes 기본 Namespace 
   - Credential: Kubernetes 접근가능한 인증 → Add → Jenkins
-
-![기존에 수집한 Secret정보와 ID 값 정의 후 추가](https://github.com/TRQ1/trq1.github.io/raw/master/_post_img/jenkins-kubernetes-1.png)
+  ![기존에 수집한 Secret정보와 ID 값 정의 후 추가](https://github.com/TRQ1/trq1.github.io/raw/master/_post_img/jenkins-kubernetes-1.png)
   - Jenkins URL: 사용중인 Jenkins URL 입력
 
 5. Jenkins slave tunnel 작업 (Service에서 Jenkins-jnlp 아이피를 확인후 아래와 같이 tunnel 설정을 해줘야한다.)
 ![Jenkins slave tunnel 작업](https://github.com/TRQ1/trq1.github.io/raw/master/_post_img/jenkins-kubernetes-2.png)
 
 #### Jenkins-Slave Pod 만들기(Custom)
-````
+```
 FROM centos:7.5.1804
  
  
