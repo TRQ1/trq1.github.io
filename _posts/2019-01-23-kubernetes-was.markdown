@@ -19,7 +19,7 @@ tags:
 ## Study with Kubernetes(2)
 
 ### 학습 일기
-2018년도 Kubernetes 1.18 버전을 학습 하기 위해서 구성 및 테스트 한 내용을 정리 하였습니다. 해당 문서는 Kubernetes에 WAS를 셋팅한 내역입니다.
+2018년도 Kubernetes 1.08 버전을 학습 하기 위해서 구성 및 테스트 한 내용을 정리 하였습니다. 해당 문서는 Kubernetes에 WAS를 셋팅한 내역입니다.
 
 
 ### Wildfly 16 설치

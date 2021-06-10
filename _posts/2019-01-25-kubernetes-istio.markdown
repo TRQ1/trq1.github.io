@@ -18,7 +18,7 @@ tags:
 ## Study with Kubernetes(4)
 
 ### 학습 일기
-2018년도 Kubernetes 1.18 버전을 학습 하기 위해서 구성 및 테스트 한 내용을 정리 하였습니다. 해당 문서는 Kubernetes에 해당 문서는 Kubernetes에 Istio 구성을 위한 개념과 구성시 필요한 사항을 정리 하였습니다.
+2018년도 Kubernetes 1.08 버전을 학습 하기 위해서 구성 및 테스트 한 내용을 정리 하였습니다. 해당 문서는 Kubernetes에 해당 문서는 Kubernetes에 Istio 구성을 위한 개념과 구성시 필요한 사항을 정리 하였습니다.
 
 ### Jenkins 설치 및 설정
 istio 아키텍처에 간단한 설명

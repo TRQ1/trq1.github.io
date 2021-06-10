@@ -17,7 +17,7 @@ tags:
 ## Study with Kubernetes(3)
 
 ### 학습 일기
-2018년도 Kubernetes 1.18 버전을 학습 하기 위해서 구성 및 테스트 한 내용을 정리 하였습니다. 해당 문서는 Kubernetes에 Jenkins를 활용하여 Pipeline을 구성 한 내용입니다.
+2018년도 Kubernetes 1.08 버전을 학습 하기 위해서 구성 및 테스트 한 내용을 정리 하였습니다. 해당 문서는 Kubernetes에 Jenkins를 활용하여 Pipeline을 구성 한 내용입니다.
 
 
 ### Jenkins 설치 및 설정
